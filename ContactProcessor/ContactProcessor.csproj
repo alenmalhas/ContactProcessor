@@ -135,12 +135,28 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DisplayInputViewModel.cs" />
-    <Compile Include="Models\FileReader.cs" />
-    <Compile Include="Models\FileWriter.cs" />
-    <Compile Include="Models\WriteViewModel.cs" />
+    <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\ConfigManager.cs" />
-    <Compile Include="Utilities\EmailClient.cs" />
+    <Compile Include="Utilities\ConfigManager\ConfigManager.cs" />
+    <Compile Include="Utilities\ConfigManager\IConfigManager.cs" />
+    <Compile Include="Utilities\Constants.cs" />
+    <Compile Include="Utilities\ContactFileReader\ContactFileReader.cs" />
+    <Compile Include="Utilities\ContactFileReader\ContactFileReaderFactory.cs" />
+    <Compile Include="Utilities\ContactFileReader\IContactFileReader.cs" />
+    <Compile Include="Utilities\ContactFileReader\IContactFileReaderFactory.cs" />
+    <Compile Include="Utilities\ContactFileWriter\ContactFileWriter.cs" />
+    <Compile Include="Utilities\ContactFileWriter\ContactFileWriterFactory.cs" />
+    <Compile Include="Utilities\ContactFileWriter\IContactFileWriter.cs" />
+    <Compile Include="Utilities\ContactFileWriter\IContactFileWriterFactory.cs" />
+    <Compile Include="Utilities\EmailClient\EmailClient.cs" />
+    <Compile Include="Utilities\EmailClient\IEmailClient.cs" />
+    <Compile Include="Utilities\FileSystemHelper\FileSystemHelper.cs" />
+    <Compile Include="Utilities\FileSystemHelper\IFileSystemHelper.cs" />
+    <Compile Include="Utilities\Logger\ILogger.cs" />
+    <Compile Include="Utilities\Logger\Logger.cs" />
+    <Compile Include="Utilities\Notifier\INotifier.cs" />
+    <Compile Include="Utilities\Notifier\NotifierEmail.cs" />
+    <Compile Include="Utilities\Notifier\NotifierText.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />

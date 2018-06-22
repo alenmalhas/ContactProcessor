@@ -1,7 +1,13 @@
 using System;
-using ContactProcessor.Utilities;
+using ContactProcessor.Controllers;
+using ContactProcessor.Utilities.ConfigManager;
+using ContactProcessor.Utilities.ContactFileReader;
+using ContactProcessor.Utilities.ContactFileWriter;
+using ContactProcessor.Utilities.EmailClient;
+using ContactProcessor.Utilities.FileSystemHelper;
+using ContactProcessor.Utilities.Logger;
+using ContactProcessor.Utilities.Notifier;
 using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.Configuration;
 
 namespace ContactProcessor.App_Start
 {
@@ -41,6 +47,30 @@ namespace ContactProcessor.App_Start
 
             container.RegisterType<IConfigManager, ConfigManager>(new HierarchicalLifetimeManager());
             container.RegisterType<IEmailClient, EmailClient>(new HierarchicalLifetimeManager());
+            container.RegisterType<ILogger, Logger>(new HierarchicalLifetimeManager());
+            container.RegisterType<IContactFileReader, ContactFileReader>(new HierarchicalLifetimeManager());
+
+            // let the factory classes be singleton as they don't change, but can be shared.
+            container.RegisterType<IContactFileReaderFactory, ContactFileReaderFactory>(new ContainerControlledLifetimeManager());
+            container.RegisterType<IContactFileWriterFactory, ContactFileWriterFactory>(new ContainerControlledLifetimeManager());
+
+            
+            container.RegisterType<INotifier, NotifierEmail>(Utilities.Constants.IOC_NotifierEmail, new HierarchicalLifetimeManager());
+            container.RegisterType<INotifier, NotifierText>(Utilities.Constants.IOC_NotifierText, new HierarchicalLifetimeManager());
+
+            container.RegisterType<IFileSystemHelper, FileSystemHelper>(new ContainerControlledLifetimeManager());
+
+            container.RegisterType<CSVReaderWriterController>(
+                new InjectionConstructor(
+                    new InjectionParameter(container.Resolve<IConfigManager>()),
+                    new InjectionParameter(container.Resolve<ILogger>()),
+                    new InjectionParameter(container.Resolve<INotifier>(Utilities.Constants.IOC_NotifierEmail)),
+                    new InjectionParameter(container.Resolve<INotifier>(Utilities.Constants.IOC_NotifierText)),
+                    new InjectionParameter(container.Resolve<IContactFileReaderFactory>()),
+                    new InjectionParameter(container.Resolve<IContactFileWriterFactory>()),
+                    new InjectionParameter(container.Resolve<IFileSystemHelper>())
+                    )
+                );
 
         }
     }

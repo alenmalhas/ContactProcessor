@@ -4,13 +4,8 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 
-namespace ContactProcessor.Utilities
+namespace ContactProcessor.Utilities.ConfigManager
 {
-    public interface IConfigManager
-    {
-        string Get(string key);
-    }
-
     public class ConfigManager : IConfigManager
     {
         public string Get(string key)

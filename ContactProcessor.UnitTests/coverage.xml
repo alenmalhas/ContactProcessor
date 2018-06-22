@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AnalyseParams>
+  <TargetExecutable>..\packages\NUnit.ConsoleRunner.3.8.0\tools\nunit3-console.exe</TargetExecutable>
+  <TargetArguments>.\bin\Debug\ContactProcessor.UnitTests.dll</TargetArguments>
+  <Output>AppCoverageReport.html</Output>
+  <ReportType>html</ReportType>
+
+<Filters>
+  <IncludeFilters>
+	<FilterEntry>
+      <ModuleMask>ContactProcessor*</ModuleMask>
+    </FilterEntry>
+  </IncludeFilters>
+  
+	<ExcludeFilters>
+		<FilterEntry>
+		  <ModuleMask>*UnitTests*</ModuleMask>
+		</FilterEntry>
+	</ExcludeFilters>
+</Filters>
+
+<AttributeFilters>
+  <AttributeFilterEntry>
+    <ClassMask>System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute</ClassMask>
+  </AttributeFilterEntry>
+</AttributeFilters>
+
+</AnalyseParams>
