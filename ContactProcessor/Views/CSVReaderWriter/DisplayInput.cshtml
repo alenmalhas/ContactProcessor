@@ -1,0 +1,28 @@
+﻿@model ContactProcessor.Models.DisplayInputViewModel
+
+@{
+    ViewBag.Title = "DisplayInput";
+}
+
+<h2>DisplayInput</h2>
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+    </tr>
+
+    @for (var i = 0; i < Model.Contacts.Count; i++)
+    {
+        <tr>
+            <td>@Model.Contacts[i].FirstName</td>
+            <td>@Model.Contacts[i].LastName</td>
+            <td>@Model.Contacts[i].PhoneNumber</td>
+            <td>@Model.Contacts[i].Email</td>
+        </tr>
+    }
+</table>
+@Html.ActionLink("Append","Write", new {filename=@Model.FileName})
+
+@Html.ActionLink("Process","Process", new {filename=@Model.FileName})
