@@ -5,24 +5,24 @@
   <Output>AppCoverageReport.html</Output>
   <ReportType>html</ReportType>
 
-<Filters>
-  <IncludeFilters>
-	<FilterEntry>
-      <ModuleMask>ContactProcessor*</ModuleMask>
-    </FilterEntry>
-  </IncludeFilters>
-  
-	<ExcludeFilters>
-		<FilterEntry>
-		  <ModuleMask>*UnitTests*</ModuleMask>
-		</FilterEntry>
-	</ExcludeFilters>
-</Filters>
+  <Filters>
+    <IncludeFilters>
+      <FilterEntry>
+        <ModuleMask>ContactProcessor*</ModuleMask>
+      </FilterEntry>
+    </IncludeFilters>
 
-<AttributeFilters>
-  <AttributeFilterEntry>
-    <ClassMask>System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute</ClassMask>
-  </AttributeFilterEntry>
-</AttributeFilters>
+    <!--<ExcludeFilters>
+      <FilterEntry>
+        <ModuleMask>*UnitTests*</ModuleMask>
+      </FilterEntry>
+    </ExcludeFilters>-->
+  </Filters>
+
+  <AttributeFilters>
+    <AttributeFilterEntry>
+      <ClassMask>System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute</ClassMask>
+    </AttributeFilterEntry>
+  </AttributeFilters>
 
 </AnalyseParams>
